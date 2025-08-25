@@ -5234,6 +5234,18 @@
       <field type="uint64_t" name="time_unix_usec" units="us">Timestamp (UNIX epoch time).</field>
       <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
     </message>
+    <message id="3" name="PLANE_TARGET_BBOX">
+      <description>Baundind boxes message</description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Time since system boot started</field>
+      <field type="uint32_t" name="shoot_time_ms" units="ms">Time from the start of the system boot to the capture of a frame</field>
+      <field type="int8_t" name="target_id">Main target ID on frame</field>
+      <field type="uint8_t" name="track_id">Track ID of box</field>
+      <field type="float" name="score">Target confedence</field>
+      <field type="float" name="left">Left side of the bounding box</field>
+      <field type="float" name="top">Top side of the bounding box</field>
+      <field type="float" name="right">Right side of the bounding box</field>
+      <field type="float" name="bottom">Bottom side of the bounding box</field>
+    </message>
     <message id="4" name="PING">
       <deprecated since="2011-08" replaced_by="TIMESYNC">To be removed / merged with TIMESYNC</deprecated>
       <description>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html</description>
@@ -5274,6 +5286,16 @@
       <field type="uint32_t" name="messages_sent">Messages sent</field>
       <field type="uint32_t" name="messages_received">Messages received (estimated from counting seq)</field>
       <field type="uint32_t" name="messages_lost">Messages lost (estimated from counting seq)</field>
+    </message>
+    <message id="9" name="PLANE_TARGET_ID">
+      <description>Target selection message</description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Time since system boot started</field>
+      <field type="uint8_t" name="target_id" units="ms">Selected target id</field>
+    </message>
+    <message id="10" name="PLANE_NO_TARGET">
+      <description>No target on frame message</description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Time since system boot started</field>
+      <field type="uint32_t" name="shoot_time_ms" units="ms">Time from the start of the system boot to the capture of a frame</field>
     </message>
     <message id="11" name="SET_MODE">
       <deprecated since="2015-12" replaced_by="MAV_CMD_DO_SET_MODE">Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</deprecated>
