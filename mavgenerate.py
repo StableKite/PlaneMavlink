@@ -21,6 +21,7 @@ Released under GNU GPL version 3 or later
 
 """
 import os
+import re
 
 from tkinter import *  # noqa: F403
 import tkinter.filedialog
@@ -30,7 +31,6 @@ from pymavlink.generator import mavgen
 from pymavlink.generator import mavparse
 
 title = "MAVLink Generator"
-error_limit = 5
 
 
 class Application(Frame):
@@ -154,11 +154,11 @@ class Application(Frame):
 
 
         if os.path.isdir(self.out_value.get()):
-            if not tkinter.messagebox.askokcancel('Overwrite Headers?','The output directory \'{0}\' already exists. Headers may be overwritten if they already exist.'.format(self.out_value.get())):
+            if not tkinter.messagebox.askokcancel('Overwrite Headers?', f"The output directory '{self.out_value.get()}' already exists. Headers may be overwritten if they already exist."):
                 return
 
         # Generate headers
-        opts = mavgen.Opts(self.out_value.get(), wire_protocol=self.protocol_value.get(), language=self.language_value.get(), validate=self.validate_value.get(), error_limit=error_limit, strict_units=self.strict_units_value.get())
+        opts = mavgen.Opts(self.out_value.get(), wire_protocol=self.protocol_value.get(), language=self.language_value.get(), validate=self.validate_value.get(), strict_units=self.strict_units_value.get())
         args = [self.xml_value.get()]
         try:
             mavgen.mavgen(opts,args)
@@ -166,7 +166,7 @@ class Application(Frame):
 
         except Exception as ex:
             exStr = formatErrorMessage(str(ex))
-            tkinter.messagebox.showerror('Error Generating Headers','{0!s}'.format(exStr))
+            tkinter.messagebox.showerror('Error Generating Headers', f"{exStr}")
             return
 
 """\

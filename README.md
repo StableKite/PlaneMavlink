@@ -13,7 +13,7 @@ MAVLink is a very lightweight, header-only message library for communication bet
 
 ### Generate C headers
 
-To install the minimal MAVLink environment on Ubuntu LTS 20.04 or 22.04, enter the following on a terminal:
+To install the minimal MAVLink environment on Ubuntu LTS 20.04, 22.04, or 24.04, enter the following on a terminal:
 
 ```bash
 # Dependencies
@@ -58,7 +58,7 @@ cd ../my_program
 cmake -Bbuild -H. -DCMAKE_PREFIX_PATH=../mavlink/install
 ```
 
-For a full example, check [examples/c](examples/c).
+For a full example, check [examples/c](examples/c) (C) or [examples/cpp](examples/cpp) (C++11).
 
 *Note: even though we use `target_link_libraries` in cmake, it doesn't actually "link" to MAVLink as it's just a header-only library.*
 
