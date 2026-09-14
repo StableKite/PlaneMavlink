@@ -43,7 +43,7 @@ jobs:
           retention-days: 1
 
   deploy:
-    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged) }}
+    if: ${{ github.repository == 'mavlink/mavlink' && (github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged)) }}
     needs: build
     runs-on: ubuntu-latest
 

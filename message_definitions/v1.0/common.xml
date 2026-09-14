@@ -5577,7 +5577,8 @@
       <field type="float" name="bottom">Normalized bottom bounding-box coordinate. Valid range: 0.0 to 1.0.</field>
       <field type="int8_t" name="target_id">Selected target identifier. Valid range: 0 to 127.</field>
       <field type="uint8_t" name="track_id">Identifier of the object described by this message. Valid range: 0 to 255.</field>
-    </message>    <message id="4" name="PING">
+    </message>
+    <message id="4" name="PING">
       <superseded since="2011-08" replaced_by="TIMESYNC">To be removed / merged with TIMESYNC</superseded>
       <description>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
@@ -5627,7 +5628,8 @@
       <description>No target was detected in the current video frame.</description>
       <field type="uint32_t" name="time_boot_ms" units="ms">Time since the transmitting system started.</field>
       <field type="uint32_t" name="shoot_time_ms" units="ms">Time from system start to capture of the frame with no detected target.</field>
-    </message>    <message id="11" name="SET_MODE">
+    </message>
+    <message id="11" name="SET_MODE">
       <superseded since="2015-12" replaced_by="MAV_CMD_DO_SET_MODE">Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</superseded>
       <description>Set the system mode, as defined by enum MAV_MODE_FLAG. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</description>
       <field type="uint8_t" name="target_system">The system setting the mode</field>
